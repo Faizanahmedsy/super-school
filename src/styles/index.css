@@ -1,0 +1,88 @@
+@import 'antd/dist/reset.css';
+@import 'country-flag/sprite-flags-24x24.css';
+@import 'ql-editor.css';
+
+:root {
+  /* --primary-color: #065f46;
+  --secondary-color: #d1fae5;
+  --tertiary-color: #ff4405; */
+
+  --primary-color: #92400e;
+  --primary-light-color: #fff7ed;
+
+  --secondary-color: #fff5ed;
+  --tertiary-color: #ff4405;
+}
+
+/* Target the scrollbar container */
+.scroll-area::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the scrollbar */
+  height: 8px;
+  /* Height of the horizontal scrollbar */
+}
+
+/* Target the scrollbar track */
+.scroll-area::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  /* Background of the scrollbar track */
+  border-radius: 10px;
+  /* Rounded corners for the track */
+}
+
+/* Target the scrollbar handle */
+.scroll-area::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  /* Scrollbar color */
+
+  border-radius: 10px;
+  /* Rounded corners for the thumb */
+}
+
+/* When hovering over the scrollbar */
+.scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Darker color when hovered */
+}
+
+.EditAntIcon {
+  color: #fff !important;
+  background-color: #cc611c;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.DeleteAntIcon {
+  color: #fff !important;
+  background-color: #f44d50;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.viewAntIcon {
+  color: #fff !important;
+  background-color: #cc611c;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.actionIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
