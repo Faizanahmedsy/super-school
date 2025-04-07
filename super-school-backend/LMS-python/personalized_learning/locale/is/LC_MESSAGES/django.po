@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: personalized_learning/views.py:46 personalized_learning/views.py:397
+msgid "school_id is required."
+msgstr "i-school_id iyadingeka."
+
+#: personalized_learning/views.py:67
+msgid ""
+"You have already generated 40 quizzes for this Class and Subject. You cannot "
+"generate more."
+msgstr ""
+"Usuvele wakhiqiza imibuzo engama-40 yeliKlasi neSifundo. Awukwazi ukukhiqiza "
+"eminye."
+
+#: personalized_learning/views.py:72 personalized_learning/views.py:408
+msgid "Both quiz_start_date_time and quiz_end_date_time are required."
+msgstr "Zombili i-quiz_start_date_time ne-quiz_end_date_time ziyadingeka."
+
+#: personalized_learning/views.py:75 personalized_learning/views.py:413
+#: personalized_learning/views.py:591
+msgid "quiz_start_date_time must be earlier than quiz_end_date_time."
+msgstr "i-quiz_start_date_time kumele ibe ngaphambi kwe-quiz_end_date_time."
+
+#: personalized_learning/views.py:78 personalized_learning/views.py:296
+msgid "Number of questions must be less than or equal to 25."
+msgstr "Inani lemibuzo kumele libe ngaphansi noma lilingane nama-25."
+
+#: personalized_learning/views.py:81
+msgid "Grade and subject are required."
+msgstr "Ibanga nesifundo kuyadingeka."
+
+#: personalized_learning/views.py:83 personalized_learning/views.py:428
+msgid "grade_class must be a non-empty list."
+msgstr "i-grade_class kumele ibe uhlu olungenalo lutho."
+
+#: personalized_learning/views.py:97
+msgid "No exam result found,Try generating quiz after exam"
+msgstr ""
+"Akukatholakali imiphumela yokuhlolwa, Zama ukukhiqiza imibuzo ngemuva "
+"kokuhlolwa"
+
+#: personalized_learning/views.py:118 personalized_learning/views.py:328
+msgid "Failed to generate quiz with AI. Please try again later."
+msgstr ""
+"Kuhlulekile ukukhiqiza imibuzo nge-AI. Sicela uzame futhi ngokuhamba "
+"kwesikhathi."
+
+#: personalized_learning/views.py:135 personalized_learning/views.py:452
+#, python-format
+msgid "GradeClass with ID %(grade_class_id)s does not exist."
+msgstr "I-GradeClass ene-ID %(grade_class_id)s ayikho."
+
+#: personalized_learning/views.py:168 personalized_learning/views.py:483
+#, python-format
+msgid "No students found for grade class %(grade_class_id)s."
+msgstr "Abafundi abatholakalanga be-grade class %(grade_class_id)s."
+
+#: personalized_learning/views.py:240
+#, python-format
+msgid "Quizzes created successfully for %(num_learners)s learners."
+msgstr "Imibuzo idalwe ngempumelelo kubafundi abangu-%(num_learners)s."
+
+#: personalized_learning/views.py:256
+msgid "You do not have permission to perform this action."
+msgstr "Awunayo imvume yokwenza lesi senzo."
+
+#: personalized_learning/views.py:261
+msgid "Term is required."
+msgstr "Itheminali iyadingeka."
+
+#: personalized_learning/views.py:275
+msgid ""
+"You have already generated 25 quizzes for this TERM. You cannot generate "
+"more."
+msgstr ""
+"Usuvele wakhiqiza imibuzo engama-25 yale THEMINE. Awukwazi ukukhiqiza eminye."
+
+#: personalized_learning/views.py:302
+msgid "grade_id required for generating quiz."
+msgstr "i-grade_id iyadingeka ukuze kukhiqizwe imibuzo."
+
+#: personalized_learning/views.py:307
+msgid "subject_id is required."
+msgstr "i-subject_id iyadingeka."
+
+#: personalized_learning/views.py:312
+msgid "weaknesses is required."
+msgstr "ubuthakathaka buyadingeka."
+
+#: personalized_learning/views.py:384
+msgid "Quiz generated successfully"
+msgstr "Imibuzo ikhiqizwe ngempumelelo"
+
+#: personalized_learning/views.py:557
+#, python-format
+msgid "Quizzes created successfully for %(count)d quizzes."
+msgstr "Imibuzo idalwe ngempumelelo yemibuzo engu-%(count)d."
+
+#: personalized_learning/views.py:573
+#, python-format
+msgid "MainQuiz with id %(pk)s does not exist."
+msgstr "I-MainQuiz ene-id %(pk)s ayikho."
+
+#: personalized_learning/views.py:618
+msgid "Each QuizQandA object must include its 'id' for update."
+msgstr "Into ngayinye ye-QuizQandA kumele ifake 'i-id' yayo ukuze ibuyekezwe."
+
+#: personalized_learning/views.py:626
+#, python-format
+msgid ""
+"QuizQandA with id %(qanda_id)s does not exist for the provided MainQuiz."
+msgstr "I-QuizQandA ene-id %(qanda_id)s ayikho kwi-MainQuiz enikeziwe."
+
+#: personalized_learning/views.py:679
+#, fuzzy
+#| msgid ""
+#| "MainQuiz and associated QuizQandA objects updated successfully. "
+#| "Notifications have been sent."
+msgid "Quiz updated successfully. Update notification sent."
+msgstr ""
+"I-MainQuiz nezinto ze-QuizQandA ezihambisana nayo zibuyekezwe ngempumelelo. "
+"Izaziso zithunyelwe."
+
+#: personalized_learning/views.py:1444
+msgid "Strengths and weaknesses retrieved successfully."
+msgstr "Amandla nobuthakathaka kutholwe ngempumelelo."
+
+#~ msgid "You do not have permission to view this quiz."
+#~ msgstr "Awunayo imvume yokubuka le mibuzo."
+
+#~ msgid "student_id is required."
+#~ msgstr "i-student_id iyadingeka."
+
+#~ msgid "quiz_id is required."
+#~ msgstr "i-quiz_id iyadingeka."
+
+#~ msgid "Invalid Quiz ID."
+#~ msgstr "I-ID Yemibuzo Ayivumelekile."
+
+#~ msgid "This quiz has already ended. You cannot attempt it now."
+#~ msgstr "Le mibuzo isivele iphelile. Awukwazi ukuyizama manje."
+
+#~ msgid "Answers are required and must be a list."
+#~ msgstr "Izimpendulo ziyadingeka futhi kumele kube uhlu."
+
+#~ msgid ""
+#~ "Each answer must include 'question_id' and 'student_answers' as a list."
+#~ msgstr ""
+#~ "Impendulo ngayinye kumele ifake 'i-question_id' kanye "
+#~ "'nezimpendulo_zomfundi' njengohlu."
+
+#, python-format
+#~ msgid "Question with ID %(question_id)s not found."
+#~ msgstr "Umbuzo one-ID %(question_id)s awutholakalanga."
+
+#~ msgid "No quizzes found."
+#~ msgstr "Ayikho imibuzo etholakele."
+
+#~ msgid "main_quiz_id is required."
+#~ msgstr "i-main_quiz_id iyadingeka."
+
+#~ msgid "MainQuiz not found."
+#~ msgstr "I-MainQuiz ayitholakalanga."
+
+#~ msgid "No Quiz found for this MainQuiz."
+#~ msgstr "Ayikho Imibuzo etholakele yale MainQuiz."
+
+#~ msgid "Missing student_id for parent role."
+#~ msgstr "I-student_id ayikho endimeni yomzali."
+
+#~ msgid "Stats not found"
+#~ msgstr "Izibalo azitholakalanga"
+
+#~ msgid "No subjects found."
+#~ msgstr "Azikho izifundo ezitholakele."
+
+#~ msgid "No data found matching the specified filters."
+#~ msgstr "Ayikho idatha etholakele ehambisana nezihlungi ezishiwo."
+
+#~ msgid ""
+#~ "Strengths and weaknesses could not be retrieved due to missing digital "
+#~ "marking data."
+#~ msgstr ""
+#~ "Amandla nobuthakathaka abukwazanga ukutholwa ngenxa yokushoda kwedatha "
+#~ "yokumaka yedijithali."

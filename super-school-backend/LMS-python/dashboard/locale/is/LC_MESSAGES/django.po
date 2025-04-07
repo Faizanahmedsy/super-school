@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dashboard/views.py:41 dashboard/views.py:88 dashboard/views.py:142
+#: dashboard/views.py:294 dashboard/views.py:346 dashboard/views.py:419
+#: dashboard/views.py:500 dashboard/views.py:662 dashboard/views.py:714
+msgid "school_id must be provided"
+msgstr "i-school_id kumele inikwe"
+
+#: dashboard/views.py:154 dashboard/views.py:353 dashboard/views.py:426
+msgid "grade_id must be provided"
+msgstr "i-grade_id kumele inikwe"
+
+#: dashboard/views.py:305 dashboard/views.py:363 dashboard/views.py:436
+#: dashboard/views.py:513
+msgid "Invalid year format."
+msgstr "Ifomethi yonyaka ayilungile."
+
+#: dashboard/views.py:507
+msgid "year parameter must be provided"
+msgstr "ipharamitha yonyaka kumele inikwe"
+
+#: dashboard/views.py:639
+msgid "Student record not found"
+msgstr "Irekhodi lomfundi alitholakalanga"
+
+#: dashboard/views.py:718
+msgid "batch_id must be provided"
+msgstr "i-batch_id kumele inikwe"

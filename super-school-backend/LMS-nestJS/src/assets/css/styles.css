@@ -1,0 +1,88 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure rounded corners apply to content */
+}
+
+/* Header Styles */
+.header {
+    background-color: #4caf50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Content Styles */
+.content {
+    padding: 20px;
+    text-align: left;
+    color: #555;
+}
+
+.content p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Highlight Text */
+.highlight {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 20px 0;
+    width: auto;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #f4f4f4;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Signature Image */
+.signature-image {
+    display: block;
+    max-width: 150px;
+    margin: 10px auto;
+}
+
+

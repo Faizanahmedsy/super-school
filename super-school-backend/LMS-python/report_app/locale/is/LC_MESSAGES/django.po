@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-28 10:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: report_app/views.py:30
+msgid "You do not have permission to generate reports."
+msgstr "Awunayo imvume yokukhiqiza imibiko."
+
+#: report_app/views.py:58
+msgid "Invalid year format. Please provide a valid year."
+msgstr "Ifomethi yonyaka ayivumelekile. Ngiyacela unikeze unyaka ovumelekile."
+
+#: report_app/views.py:122
+#, python-format
+msgid "Error processing data for school %(school_name)s: %(error)s"
+msgstr "Iphutha ekucubunguleni imininingwane yesikole %(school_name)s: %(error)s"
+
+#: report_app/views.py:175
+msgid "School ID is required for users with SUPER_ROLE."
+msgstr "I-ID yesikole iyadingeka kubasebenzisi abane-SUPER_ROLE."
+
+#: report_app/views.py:188 report_app/views.py:472 report_app/views.py:626
+#: report_app/views.py:760
+msgid "School ID is required."
+msgstr "I-ID yesikole iyadingeka."
+
+#: report_app/views.py:197 report_app/views.py:321 report_app/views.py:468
+msgid "Invalid batch_id format. It must be an integer."
+msgstr "Ifomethi ye-batch_id ayivumelekile. Kumele kube yinombolo ephelele."
+
+#: report_app/views.py:218 report_app/views.py:362 report_app/views.py:500
+#: report_app/views.py:654 report_app/views.py:784
+msgid "Invalid subject_id format. It must be an integer."
+msgstr "Ifomethi ye-subject_id ayivumelekile. Kumele kube yinombolo ephelele."
+
+#: report_app/views.py:310 report_app/views.py:457
+msgid "School ID is required for SUPER_ROLE users."
+msgstr "I-ID yesikole iyadingeka kubasebenzisi be-SUPER_ROLE."
+
+#: report_app/views.py:317 report_app/views.py:464 report_app/views.py:623
+#: report_app/views.py:757
+msgid "Batch ID is required."
+msgstr "I-Batch ID iyadingeka."
+
+#: report_app/views.py:327 report_app/views.py:477 report_app/views.py:738
+#: report_app/views.py:852
+msgid "School not found."
+msgstr "Isikole asitholakalanga."
+
+#: report_app/views.py:742 report_app/views.py:856
+#, python-format
+msgid "An error occurred: %(error)s"
+msgstr "Kuvele iphutha: %(error)s"

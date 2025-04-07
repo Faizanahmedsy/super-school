@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personalized_learning/views.py:46 personalized_learning/views.py:397
+msgid "school_id is required."
+msgstr ""
+
+#: personalized_learning/views.py:67
+msgid ""
+"You have already generated 40 quizzes for this Class and Subject. You cannot "
+"generate more."
+msgstr ""
+
+#: personalized_learning/views.py:72 personalized_learning/views.py:408
+msgid "Both quiz_start_date_time and quiz_end_date_time are required."
+msgstr ""
+
+#: personalized_learning/views.py:75 personalized_learning/views.py:413
+#: personalized_learning/views.py:591
+msgid "quiz_start_date_time must be earlier than quiz_end_date_time."
+msgstr ""
+
+#: personalized_learning/views.py:78 personalized_learning/views.py:296
+msgid "Number of questions must be less than or equal to 25."
+msgstr ""
+
+#: personalized_learning/views.py:81
+msgid "Grade and subject are required."
+msgstr ""
+
+#: personalized_learning/views.py:83 personalized_learning/views.py:428
+msgid "grade_class must be a non-empty list."
+msgstr ""
+
+#: personalized_learning/views.py:97
+msgid "No exam result found,Try generating quiz after exam"
+msgstr ""
+
+#: personalized_learning/views.py:118 personalized_learning/views.py:328
+msgid "Failed to generate quiz with AI. Please try again later."
+msgstr ""
+
+#: personalized_learning/views.py:135 personalized_learning/views.py:452
+#, python-format
+msgid "GradeClass with ID %(grade_class_id)s does not exist."
+msgstr ""
+
+#: personalized_learning/views.py:168 personalized_learning/views.py:483
+#, python-format
+msgid "No students found for grade class %(grade_class_id)s."
+msgstr ""
+
+#: personalized_learning/views.py:240
+#, python-format
+msgid "Quizzes created successfully for %(num_learners)s learners."
+msgstr ""
+
+#: personalized_learning/views.py:256
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: personalized_learning/views.py:261
+msgid "Term is required."
+msgstr ""
+
+#: personalized_learning/views.py:275
+msgid ""
+"You have already generated 25 quizzes for this TERM. You cannot generate "
+"more."
+msgstr ""
+
+#: personalized_learning/views.py:302
+msgid "grade_id required for generating quiz."
+msgstr ""
+
+#: personalized_learning/views.py:307
+msgid "subject_id is required."
+msgstr ""
+
+#: personalized_learning/views.py:312
+msgid "weaknesses is required."
+msgstr ""
+
+#: personalized_learning/views.py:384
+msgid "Quiz generated successfully"
+msgstr ""
+
+#: personalized_learning/views.py:557
+#, python-format
+msgid "Quizzes created successfully for %(count)d quizzes."
+msgstr ""
+
+#: personalized_learning/views.py:573
+#, python-format
+msgid "MainQuiz with id %(pk)s does not exist."
+msgstr ""
+
+#: personalized_learning/views.py:618
+msgid "Each QuizQandA object must include its 'id' for update."
+msgstr ""
+
+#: personalized_learning/views.py:626
+#, python-format
+msgid ""
+"QuizQandA with id %(qanda_id)s does not exist for the provided MainQuiz."
+msgstr ""
+
+#: personalized_learning/views.py:679
+msgid "Quiz updated successfully. Update notification sent."
+msgstr ""
+
+#: personalized_learning/views.py:1444
+msgid "Strengths and weaknesses retrieved successfully."
+msgstr ""

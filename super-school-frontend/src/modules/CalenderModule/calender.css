@@ -1,0 +1,72 @@
+.examTimetable .rbc-header {
+  padding: 10px;
+}
+
+.examTimetable .rbc-month-view {
+  min-width: 1300px !important;
+  overflow-x: auto !important;
+}
+
+.examTimetable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.examTimetable::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.examTimetable::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+.examTimetable .rbc-toolbar button.rbc-active {
+  background-color: #cc611c;
+  color: #ffff;
+  box-shadow: none;
+}
+
+.examTimetable .rbc-event,
+.rbc-day-slot .rbc-background-event {
+  background-color: darkgreen;
+}
+
+.examTimetable .rbc-today .rbc-button-link {
+  color: #ff4405;
+}
+
+.examTimetable .rbc-today {
+  background-color: #fff7ed;
+}
+
+.examTimetable .rbc-event {
+  margin: 2px 2px;
+  width: auto !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  font-size: 13px !important;
+  overflow-y: auto;
+}
+
+.examTimetable .rbc-agenda-date-cell {
+  background-color: white !important;
+}
+
+.examTimetable .rbc-agenda-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.examTimetable .rbc-time-view {
+  margin-bottom: 15px;
+}
+
+.examTimetable .rbc-event-label {
+  display: none !important;
+}

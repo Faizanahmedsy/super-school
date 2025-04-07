@@ -1,0 +1,73 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Welcome to grAIdar</title>
+    </head>
+
+    <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f9">
+        <div
+            style="
+                max-width: 600px;
+                margin: 20px auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            "
+        >
+            <div>
+                <header
+                    style="
+                        background-color: #0a740a;
+                        color: white;
+                        padding: 20px;
+                        text-align: center;
+                        border-top-left-radius: 8px;
+                        border-top-right-radius: 8px;
+                    "
+                >
+                    <h1 style="font-size: 24px; margin: 0">Welcome to grAIdar</h1>
+                    <p style="font-size: 16px; margin: 0">Your Digital Marking Assistant</p>
+                </header>
+                <div style="padding: 20px; text-align: left; color: #555">
+                    <h1>Welcome!</h1>
+                    <p style="font-size: 16px; margin: 10px 0">Thank you for registering with the Department of Education.</p>
+                    <p style="font-size: 16px; margin: 10px 0">Please verify your email address to get started:</p>
+                    <div style="margin-top: 10%">
+                        <div style="text-align: center">
+                            <a
+                                href="{{verificationUrl}}"
+                                style="
+                                    display: inline-block;
+                                    padding: 12px 24px;
+                                    background-color: #0a740a;
+                                    color: #fff;
+                                    font-size: 18px;
+                                    text-align: center;
+                                    text-decoration: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                "
+                            >Verify Email</a>
+                        </div>
+                    </div>
+
+                    <img src="{{logoPath}}/nsc_email.png" alt="image" class="signature-image" style="display: block; max-width: 150px; margin: 10px auto" />
+                </div>
+                <footer
+                    style="
+                        background-color: #f4f4f4;
+                        padding: 15px;
+                        text-align: center;
+                        font-size: 12px;
+                        border-bottom-left-radius: 8px;
+                        border-bottom-right-radius: 8px;
+                    "
+                >
+                    <p style="margin: 0">&copy; {{year}} grAIdar, All Rights Reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

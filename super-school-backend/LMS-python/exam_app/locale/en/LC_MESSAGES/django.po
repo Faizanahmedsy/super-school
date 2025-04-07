@@ -1,0 +1,228 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: exam_app/services/assessment_create_services.py:19
+#, python-format
+msgid "The '%(missing_field)s' field is required."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:26
+msgid "Assessment start datetime must be before assessment end datetime."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:28
+msgid "Invalid datetime format. Use ISO 8601 format."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:47
+msgid "No class subjects found for the given grade, batch, and term."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:51
+msgid "No teacher is assigned to any class for the given criteria."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:55
+msgid "No students are assigned to any class for the given criteria."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:58
+msgid "Invalid data for grade, batch, or term."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:77
+msgid ""
+"You do not have permission to create assessments for this class as current "
+"batch."
+msgstr ""
+
+#: exam_app/services/assessment_create_services.py:121
+#, python-format
+msgid "The %(field)s field: %(message)s"
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:74
+msgid "Invalid subject ID provided."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:82
+#, python-format
+msgid "Invalid grade class IDs provided: %(invalid_ids)s"
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:96
+msgid "No teacher is assigned to the provided grade, batch, and subject."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:109
+msgid "No students are assigned to the provided grade, batch, and subject."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:199
+msgid "Assessment subjects created successfully."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:209
+msgid "Teacher record not found."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:217
+#: exam_app/services/assessment_subject_create.py:249
+msgid "Invalid assessment or datetime format."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:220
+msgid "Unauthorized: Teacher does not teach the provided class or subject."
+msgstr ""
+
+#: exam_app/services/assessment_subject_create.py:243
+msgid "Invalid assessment ID."
+msgstr ""
+
+#: exam_app/services/assessment_update_services.py:43
+msgid ""
+"The assessment start date must be on or before the earliest associated "
+"AssessmentSubject start date."
+msgstr ""
+
+#: exam_app/services/assessment_update_services.py:49
+msgid ""
+"Assessment end date must be later than or equal to the latest associated "
+"AssessmentSubject end date."
+msgstr ""
+
+#: exam_app/services/assessment_update_services.py:67
+#, python-format
+msgid "Invalid datetime format: %(datetime)s"
+msgstr ""
+
+#: exam_app/views/assessment.py:53 exam_app/views/assessment.py:147
+#: exam_app/views/assessment.py:180 exam_app/views/assessment.py:215
+#: exam_app/views/assessment.py:291 exam_app/views/assessment_subject.py:53
+#: exam_app/views/assessment_subject.py:72
+#: exam_app/views/assessment_subject.py:106
+#: exam_app/views/assessment_subject.py:155
+#: exam_app/views/assessment_subject.py:207
+msgid "School ID is required."
+msgstr ""
+
+#: exam_app/views/assessment.py:69
+#, python-format
+msgid "Missing required fields: %(fields)s"
+msgstr ""
+
+#: exam_app/views/assessment.py:84
+msgid "You do not have permission to create assessments."
+msgstr ""
+
+#: exam_app/views/assessment.py:124
+msgid "Assessment created successfully"
+msgstr ""
+
+#: exam_app/views/assessment.py:161 exam_app/views/assessment.py:194
+#: exam_app/views/assessment_subject.py:85
+msgid "Role not recognized."
+msgstr ""
+
+#: exam_app/views/assessment.py:169 exam_app/views/assessment.py:202
+#: exam_app/views/assessment_subject.py:89
+msgid "No data found."
+msgstr ""
+
+#: exam_app/views/assessment.py:221 exam_app/views/assessment.py:297
+msgid "You are not authorized to update this assessment."
+msgstr ""
+
+#: exam_app/views/assessment.py:225 exam_app/views/assessment.py:301
+msgid "You do not have access to this assessment."
+msgstr ""
+
+#: exam_app/views/assessment.py:231 exam_app/views/assessment.py:306
+msgid "You do not belong to this school."
+msgstr ""
+
+#: exam_app/views/assessment.py:276
+msgid "Assessment updated successfully"
+msgstr ""
+
+#: exam_app/views/assessment.py:310
+msgid "Cannot cancel a cancelled assessment."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:61
+msgid "Unauthorized role."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:113
+msgid "Both `assessment_subject_id` and `memo` are required."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:121
+#: exam_app/views/assessment_subject.py:171
+#, python-format
+msgid ""
+"AssessmentSubject with id %(id)s does not exist or is not in your school."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:135
+msgid "Memo updated successfully."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:163
+msgid "Both `assessment_subject_id` and `question_paper` are required."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:185
+msgid "Question Paper updated successfully."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:212
+msgid "Cannot cancel assessment."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:242
+msgid "Assessment cancelled successfully."
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:271
+#: exam_app/views/assessment_subject.py:349
+msgid "assessment_subject_id is required"
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:281
+msgid "No students found for this assessment subject"
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:313
+msgid "Cover paper downloaded successfully"
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:363
+msgid "Cover paper deleted successfully"
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:367
+msgid "File not found in storage"
+msgstr ""
+
+#: exam_app/views/assessment_subject.py:372
+#, python-format
+msgid "Error deleting cover paper: %(error)s"
+msgstr ""

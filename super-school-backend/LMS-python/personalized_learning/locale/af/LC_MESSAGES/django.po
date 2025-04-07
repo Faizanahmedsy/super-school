@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 09:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personalized_learning/views.py:46 personalized_learning/views.py:397
+msgid "school_id is required."
+msgstr "school_id is vereis."
+
+#: personalized_learning/views.py:67
+msgid ""
+"You have already generated 40 quizzes for this Class and Subject. You cannot "
+"generate more."
+msgstr ""
+"Jy het reeds 40 vasvrae vir hierdie klas en vak gegenereer. Jy kan nie meer "
+"genereer nie."
+
+#: personalized_learning/views.py:72 personalized_learning/views.py:408
+msgid "Both quiz_start_date_time and quiz_end_date_time are required."
+msgstr "Beide quiz_start_date_time en quiz_end_date_time is vereis."
+
+#: personalized_learning/views.py:75 personalized_learning/views.py:413
+#: personalized_learning/views.py:591
+msgid "quiz_start_date_time must be earlier than quiz_end_date_time."
+msgstr "quiz_start_date_time moet vroeër wees as quiz_end_date_time."
+
+#: personalized_learning/views.py:78 personalized_learning/views.py:296
+msgid "Number of questions must be less than or equal to 25."
+msgstr "Die aantal vrae moet minder as of gelyk aan 25 wees."
+
+#: personalized_learning/views.py:81
+msgid "Grade and subject are required."
+msgstr "Graad en vak is vereis."
+
+#: personalized_learning/views.py:83 personalized_learning/views.py:428
+msgid "grade_class must be a non-empty list."
+msgstr "grade_class moet 'n nie-leë lys wees."
+
+#: personalized_learning/views.py:97
+msgid "No exam result found,Try generating quiz after exam"
+msgstr ""
+"Geen eksamenuitslae gevind nie. Probeer om die vasvra na die eksamen te "
+"genereer."
+
+#: personalized_learning/views.py:118 personalized_learning/views.py:328
+msgid "Failed to generate quiz with AI. Please try again later."
+msgstr "Kon nie die vasvra met AI genereer nie. Probeer asseblief later weer."
+
+#: personalized_learning/views.py:135 personalized_learning/views.py:452
+#, python-format
+msgid "GradeClass with ID %(grade_class_id)s does not exist."
+msgstr "GradeClass met ID %(grade_class_id)s bestaan nie."
+
+#: personalized_learning/views.py:168 personalized_learning/views.py:483
+#, python-format
+msgid "No students found for grade class %(grade_class_id)s."
+msgstr "Geen studente gevind vir graadklas %(grade_class_id)s nie."
+
+#: personalized_learning/views.py:240
+#, python-format
+msgid "Quizzes created successfully for %(num_learners)s learners."
+msgstr "Vasvrae suksesvol geskep vir %(num_learners)s leerders."
+
+#: personalized_learning/views.py:256
+msgid "You do not have permission to perform this action."
+msgstr "Jy het nie toestemming om hierdie aksie uit te voer nie."
+
+#: personalized_learning/views.py:261
+msgid "Term is required."
+msgstr "Termyn is vereis."
+
+#: personalized_learning/views.py:275
+msgid ""
+"You have already generated 25 quizzes for this TERM. You cannot generate "
+"more."
+msgstr ""
+"Jy het reeds 25 vasvrae vir hierdie termyn gegenereer. Jy kan nie meer "
+"genereer nie."
+
+#: personalized_learning/views.py:302
+msgid "grade_id required for generating quiz."
+msgstr "grade_id is vereis om 'n vasvra te genereer."
+
+#: personalized_learning/views.py:307
+msgid "subject_id is required."
+msgstr "subject_id is vereis."
+
+#: personalized_learning/views.py:312
+msgid "weaknesses is required."
+msgstr "swakhede is vereis."
+
+#: personalized_learning/views.py:384
+msgid "Quiz generated successfully"
+msgstr "Vasvra suksesvol gegenereer."
+
+#: personalized_learning/views.py:557
+#, python-format
+msgid "Quizzes created successfully for %(count)d quizzes."
+msgstr "Vasvrae suksesvol geskep vir %(count)d vasvrae."
+
+#: personalized_learning/views.py:573
+#, python-format
+msgid "MainQuiz with id %(pk)s does not exist."
+msgstr "MainQuiz met id %(pk)s bestaan nie."
+
+#: personalized_learning/views.py:618
+msgid "Each QuizQandA object must include its 'id' for update."
+msgstr "Elke QuizQandA-objek moet sy 'id' insluit vir opdatering."
+
+#: personalized_learning/views.py:626
+#, python-format
+msgid ""
+"QuizQandA with id %(qanda_id)s does not exist for the provided MainQuiz."
+msgstr "QuizQandA met id %(qanda_id)s bestaan nie vir die gegewe MainQuiz nie."
+
+#: personalized_learning/views.py:679
+#, fuzzy
+#| msgid ""
+#| "MainQuiz and associated QuizQandA objects updated successfully. "
+#| "Notifications have been sent."
+msgid "Quiz updated successfully. Update notification sent."
+msgstr ""
+"MainQuiz en verwante QuizQandA-voorwerpe suksesvol opgedateer. Kennisgewings "
+"is gestuur."
+
+#: personalized_learning/views.py:1444
+msgid "Strengths and weaknesses retrieved successfully."
+msgstr "Sterkpunte en swakpunte suksesvol verkry."
+
+#~ msgid "You do not have permission to view this quiz."
+#~ msgstr "Jy het nie toestemming om hierdie vasvra te besigtig nie."
+
+#~ msgid "student_id is required."
+#~ msgstr "student_id is vereis."
+
+#~ msgid "quiz_id is required."
+#~ msgstr "quiz_id is vereis."
+
+#~ msgid "Invalid Quiz ID."
+#~ msgstr "Ongeldige vasvra-ID."
+
+#~ msgid "This quiz has already ended. You cannot attempt it now."
+#~ msgstr "Hierdie vasvra het reeds geëindig. Jy kan dit nie nou probeer nie."
+
+#~ msgid "Answers are required and must be a list."
+#~ msgstr "Antwoorde is vereis en moet 'n lys wees."
+
+#~ msgid ""
+#~ "Each answer must include 'question_id' and 'student_answers' as a list."
+#~ msgstr ""
+#~ "Elke antwoord moet 'question_id' en 'student_answers' as 'n lys insluit."
+
+#, python-format
+#~ msgid "Question with ID %(question_id)s not found."
+#~ msgstr "Vraag met ID %(question_id)s nie gevind nie."
+
+#~ msgid "No quizzes found."
+#~ msgstr "Geen vasvrae gevind nie."
+
+#~ msgid "main_quiz_id is required."
+#~ msgstr "main_quiz_id is vereis."
+
+#~ msgid "MainQuiz not found."
+#~ msgstr "MainQuiz nie gevind nie."
+
+#~ msgid "No Quiz found for this MainQuiz."
+#~ msgstr "Geen vasvra gevind vir hierdie MainQuiz nie."
+
+#~ msgid "Missing student_id for parent role."
+#~ msgstr "Ontbrekende student_id vir ouerrol."
+
+#~ msgid "Stats not found"
+#~ msgstr "Statistieke nie gevind nie."
+
+#~ msgid "No subjects found."
+#~ msgstr "Geen vakke gevind nie."
+
+#~ msgid "No data found matching the specified filters."
+#~ msgstr ""
+#~ "Geen data gevind wat ooreenstem met die gespesifiseerde filters nie."
+
+#~ msgid ""
+#~ "Strengths and weaknesses could not be retrieved due to missing digital "
+#~ "marking data."
+#~ msgstr ""
+#~ "Sterkpunte en swakpunte kon nie verkry word nie as gevolg van ontbrekende "
+#~ "digitale merkdata."

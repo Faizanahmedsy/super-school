@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User Limit Notification</title>
+        <style>
+            body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f9; } .main-container {
+            max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden; }
+            .container { max-width: 500px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; } .header { background-color: #0a740a; color: white; padding: 20px; text-align: center; border-top-left-radius: 8px;
+            border-top-right-radius: 8px; } .header h1 { font-size: 24px; margin: 0; } .header p { font-size: 16px; margin: 0; } .content { text-align: left;
+            color: #555; } .content p { font-size: 16px; margin: 10px 0; } .highlight { font-weight: bold; color: #0a740a; } ul { padding-left: 20px; } li {
+            margin: 8px 0; } .footer { background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 12px; border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px; } .footer p { margin: 0; } .signature-image { display: block; max-width: 150px; margin: 10px auto; }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="header">
+                <h1>User Limit Notification</h1>
+
+            </header>
+            <div class="container">
+                <div class="content">
+                    <p>Dear Admin,</p>
+
+                    <p>
+                        We would like to inform you that the number of users in your school,
+                        <span class="highlight">{{school_name}}</span>, has reached of the maximum user capacity.
+                    </p>
+
+                    <p>Here are the details:</p>
+                    <ul>
+                        <li><strong>Current User Count:</strong> {{totalUsers}} users</li>
+                        <li><strong>Maximum User Capacity:</strong> {{maxUsers}} users</li>
+
+                    </ul>
+
+                    <p>If you need assistance, please contact us at <span class="highlight">{{support_email}}</span>.</p>
+
+                    <br />
+                    <p>Yours sincerely,</p>
+                    <p>Team grAIdar</p>
+
+                    <img src="{{logoPath}}/nsc_email.png" alt="grAIdar Logo" class="signature-image" />
+
+                </div>
+
+                <footer class="footer">
+                    <p>&copy; {{year}} grAIdar. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

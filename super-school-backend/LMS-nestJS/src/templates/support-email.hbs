@@ -1,0 +1,51 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User Support Request</title>
+        <style>
+            body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f9; } .main-container {
+            max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden; }
+            .header { background-color: #0a740a; color: white; padding: 20px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+            .header h1 { font-size: 24px; margin: 0; } .content { padding: 20px; text-align: left; color: #555; } .content p { font-size: 16px; margin: 10px 0;
+            } .highlight { font-weight: bold; color: #0a740a; } ul { padding-left: 20px; } li { margin: 8px 0; } .attachments { margin-top: 20px; } .attachments
+            a { display: block; margin: 5px 0; color: #3498db; text-decoration: none; } .attachments a:hover { text-decoration: underline; } .footer {
+            background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 12px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+            .footer p { margin: 0; }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="header">
+                <h1>New Support Request</h1>
+            </header>
+            <div class="content">
+                <p>Dear <span style="color: #0a740a;">Super Admin</span>,</p>
+                <p>
+                    A user has submitted a
+                    <span style="color: #0a740a;">support request</span>
+                    with the following details:
+                </p>
+                <ul>
+                    <li><strong>Description:</strong> {{description}}</li>
+                    <li><strong>Role:</strong> {{role_name}}</li>
+                    <li><strong>School Name:</strong> {{school_name}}</li>
+                    <li><strong>User Email:</strong> {{email}}</li>
+                </ul>
+                <p>
+                    Please review the details and address the issue at your earliest convenience.
+                </p>
+                <br />
+                <p>Yours sincerely,</p>
+                <p>Team Support</p>
+                <p>Team Technov8</p>
+
+                <img src="{{logoPath}}/nsc_email.png" alt="image" class="signature-image" style="display: block; max-width: 150px; margin: 10px auto" />
+
+            </div>
+            <footer class="footer">
+                <p>&copy; {{year}} Your Application. All rights reserved.</p>
+            </footer>
+        </div>
+    </body>
+</html>

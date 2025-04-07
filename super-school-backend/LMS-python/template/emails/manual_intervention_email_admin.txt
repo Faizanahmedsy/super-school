@@ -1,0 +1,20 @@
+Subject: Manual Intervention Required for Answer Sheet Review
+
+Hello, Admin!
+
+Our system has detected some issues with the answer sheets of certain students that require your attention.
+
+Assessment: {{ assessment_name }}
+Paper Title: {{ assessment_subject_name }}
+
+List of Students:
+{% for student in students %}
+- {{ student.name }} (Admission No: {{ student.admission_no }})
+{% endfor %}
+
+Please coordinate with the designated teachers to ensure the issues are resolved and manual marks are reviewed. The specific errors involve undetected words that require a closer look.
+
+You can access the admin dashboard to manage this by clicking the following link: {{adminReviewUrl}}
+
+Regards,
+Team grAIdar

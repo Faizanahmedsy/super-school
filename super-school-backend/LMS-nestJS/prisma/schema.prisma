@@ -1,0 +1,828 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model answer_sheet_images {
+  id                      BigInt                @id @default(autoincrement())
+  image                   String                @db.VarChar(100)
+  ocr_status              Boolean
+  created_at              DateTime              @db.Timestamptz(6)
+  student_answer_sheet_id BigInt
+  student_answer_sheets   student_answer_sheets @relation(fields: [student_answer_sheet_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "answer_sheet_images_student_answer_sheet_7dcf5ab5_fk_student_a")
+
+  @@index([student_answer_sheet_id], map: "answer_sheet_images_student_answer_sheet_id_7dcf5ab5")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model assessment_subjects {
+  id                                             BigInt                  @id @default(autoincrement())
+  memorandom                                     String                  @db.VarChar(100)
+  question_paper                                 String                  @db.VarChar(100)
+  assessment_start_datetime                      DateTime                @db.Timestamptz(6)
+  assessment_end_datetime                        DateTime                @db.Timestamptz(6)
+  status                                         String                  @db.VarChar(100)
+  created_at                                     DateTime                @db.Timestamptz(6)
+  updated_at                                     DateTime                @db.Timestamptz(6)
+  deleted_at                                     DateTime                @db.Timestamptz(6)
+  assessment_id                                  BigInt
+  created_by_id                                  BigInt
+  deleted_by_id                                  BigInt?
+  grade_id                                       BigInt
+  grade_class_id                                 BigInt
+  school_id                                      BigInt
+  subject_id                                     BigInt
+  updated_by_id                                  BigInt?
+  assessments                                    assessments             @relation(fields: [assessment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_assessment_id_a474d938_fk_assessments_id")
+  users_assessment_subjects_created_by_idTousers users                   @relation("assessment_subjects_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_created_by_id_4a33a565_fk_users_id")
+  users_assessment_subjects_deleted_by_idTousers users?                  @relation("assessment_subjects_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_deleted_by_id_8b2b74b7_fk_users_id")
+  grade_classes                                  grade_classes           @relation(fields: [grade_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_grade_class_id_b7eaefcb_fk_grade_classes_id")
+  grades                                         grades                  @relation(fields: [grade_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_grade_id_7e0dc99a_fk_grades_id")
+  schools                                        schools                 @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_school_id_447757b2_fk_schools_id")
+  subjects                                       subjects                @relation(fields: [subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_subject_id_7f8a3945_fk_subjects_id")
+  users_assessment_subjects_updated_by_idTousers users?                  @relation("assessment_subjects_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessment_subjects_updated_by_id_d9fdb2c0_fk_users_id")
+  student_answer_sheets                          student_answer_sheets[]
+
+  @@index([assessment_id], map: "assessment_subjects_assessment_id_a474d938")
+  @@index([created_by_id], map: "assessment_subjects_created_by_id_4a33a565")
+  @@index([deleted_by_id], map: "assessment_subjects_deleted_by_id_8b2b74b7")
+  @@index([grade_class_id], map: "assessment_subjects_grade_class_id_b7eaefcb")
+  @@index([grade_id], map: "assessment_subjects_grade_id_7e0dc99a")
+  @@index([school_id], map: "assessment_subjects_school_id_447757b2")
+  @@index([subject_id], map: "assessment_subjects_subject_id_7f8a3945")
+  @@index([updated_by_id], map: "assessment_subjects_updated_by_id_d9fdb2c0")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model assessments {
+  id                                     BigInt                    @id @default(autoincrement())
+  assessment_name                        String                    @db.VarChar(100)
+  assessment_start_datetime              DateTime                  @db.Timestamptz(6)
+  assessment_end_datetime                DateTime                  @db.Timestamptz(6)
+  status                                 String                    @db.VarChar(100)
+  created_at                             DateTime                  @db.Timestamptz(6)
+  updated_at                             DateTime                  @db.Timestamptz(6)
+  deleted_at                             DateTime                  @db.Timestamptz(6)
+  batch_id                               BigInt
+  created_by_id                          BigInt
+  deleted_by_id                          BigInt?
+  grade_id                               BigInt
+  school_id                              BigInt
+  updated_by_id                          BigInt?
+  assessment_subjects                    assessment_subjects[]
+  batches                                batches                   @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_batch_id_0cc99231_fk_batches_id")
+  users_assessments_created_by_idTousers users                     @relation("assessments_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_created_by_id_0597f103_fk_users_id")
+  users_assessments_deleted_by_idTousers users?                    @relation("assessments_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_deleted_by_id_9191c0b5_fk_users_id")
+  grades                                 grades                    @relation(fields: [grade_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_grade_id_6f25dfc2_fk_grades_id")
+  schools                                schools                   @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_school_id_6d7f0dfe_fk_schools_id")
+  users_assessments_updated_by_idTousers users?                    @relation("assessments_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_updated_by_id_0776ca30_fk_users_id")
+  assessments_grade_class                assessments_grade_class[]
+
+  @@index([batch_id], map: "assessments_batch_id_0cc99231")
+  @@index([created_by_id], map: "assessments_created_by_id_0597f103")
+  @@index([deleted_by_id], map: "assessments_deleted_by_id_9191c0b5")
+  @@index([grade_id], map: "assessments_grade_id_6f25dfc2")
+  @@index([school_id], map: "assessments_school_id_6d7f0dfe")
+  @@index([updated_by_id], map: "assessments_updated_by_id_0776ca30")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model assessments_grade_class {
+  id            BigInt        @id @default(autoincrement())
+  assessment_id BigInt
+  gradeclass_id BigInt
+  assessments   assessments   @relation(fields: [assessment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_grade_cl_assessment_id_c9540b9f_fk_assessmen")
+  grade_classes grade_classes @relation(fields: [gradeclass_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "assessments_grade_cl_gradeclass_id_84108dc2_fk_grade_cla")
+
+  @@unique([assessment_id, gradeclass_id], map: "assessments_grade_class_assessment_id_gradeclass_08174b19_uniq")
+  @@index([assessment_id], map: "assessments_grade_class_assessment_id_c9540b9f")
+  @@index([gradeclass_id], map: "assessments_grade_class_gradeclass_id_84108dc2")
+}
+
+model auth_group {
+  id                     Int                      @id @default(autoincrement())
+  name                   String                   @unique @db.VarChar(150)
+  auth_group_permissions auth_group_permissions[]
+  auth_user_groups       auth_user_groups[]
+
+  @@index([name], map: "auth_group_name_a6ea08ec_like")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model auth_group_permissions {
+  id              BigInt          @id @default(autoincrement())
+  group_id        Int
+  permission_id   Int
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm")
+  auth_group      auth_group      @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_group_permissions_group_id_b120cbf9_fk_auth_group_id")
+
+  @@unique([group_id, permission_id], map: "auth_group_permissions_group_id_permission_id_0cd325b0_uniq")
+  @@index([group_id], map: "auth_group_permissions_group_id_b120cbf9")
+  @@index([permission_id], map: "auth_group_permissions_permission_id_84c5c92e")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model auth_permission {
+  id                         Int                          @id @default(autoincrement())
+  name                       String                       @db.VarChar(255)
+  content_type_id            Int
+  codename                   String                       @db.VarChar(100)
+  auth_group_permissions     auth_group_permissions[]
+  django_content_type        django_content_type          @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_permission_content_type_id_2f476e4b_fk_django_co")
+  auth_user_user_permissions auth_user_user_permissions[]
+
+  @@unique([content_type_id, codename], map: "auth_permission_content_type_id_codename_01ab375a_uniq")
+  @@index([content_type_id], map: "auth_permission_content_type_id_2f476e4b")
+}
+
+model auth_user {
+  id                         Int                          @id @default(autoincrement())
+  password                   String                       @db.VarChar(128)
+  last_login                 DateTime?                    @db.Timestamptz(6)
+  is_superuser               Boolean
+  username                   String                       @unique @db.VarChar(150)
+  first_name                 String                       @db.VarChar(150)
+  last_name                  String                       @db.VarChar(150)
+  email                      String                       @db.VarChar(254)
+  is_staff                   Boolean
+  is_active                  Boolean
+  date_joined                DateTime                     @db.Timestamptz(6)
+  auth_user_groups           auth_user_groups[]
+  auth_user_user_permissions auth_user_user_permissions[]
+
+  @@index([username], map: "auth_user_username_6821ab7c_like")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model auth_user_groups {
+  id         BigInt     @id @default(autoincrement())
+  user_id    Int
+  group_id   Int
+  auth_group auth_group @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_user_groups_group_id_97559544_fk_auth_group_id")
+  auth_user  auth_user  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_user_groups_user_id_6a12ed8b_fk_auth_user_id")
+
+  @@unique([user_id, group_id], map: "auth_user_groups_user_id_group_id_94350c0c_uniq")
+  @@index([group_id], map: "auth_user_groups_group_id_97559544")
+  @@index([user_id], map: "auth_user_groups_user_id_6a12ed8b")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model auth_user_user_permissions {
+  id              BigInt          @id @default(autoincrement())
+  user_id         Int
+  permission_id   Int
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm")
+  auth_user       auth_user       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id")
+
+  @@unique([user_id, permission_id], map: "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq")
+  @@index([permission_id], map: "auth_user_user_permissions_permission_id_1fbb5f2c")
+  @@index([user_id], map: "auth_user_user_permissions_user_id_a95ead1b")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model batches {
+  id                                 BigInt        @id @default(autoincrement())
+  batch_name                         String        @db.VarChar(100)
+  start_year                         Int
+  end_year                           Int
+  start_month                        String        @db.VarChar
+  end_month                          String        @db.VarChar
+  created_at                         DateTime      @db.Timestamptz(6)
+  updated_at                         DateTime      @db.Timestamptz(6)
+  deleted_at                         DateTime      @db.Timestamptz(6)
+  school_id                          BigInt
+  created_by_id                      BigInt
+  deleted_by_id                      BigInt?
+  updated_by_id                      BigInt?
+  assessments                        assessments[]
+  users_batches_created_by_idTousers users         @relation("batches_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "batches_created_by_id_eba943cc_fk_users_id")
+  users_batches_deleted_by_idTousers users?        @relation("batches_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "batches_deleted_by_id_050c00b9_fk_users_id")
+  schools                            schools       @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "batches_school_id_04382be2_fk_schools_id")
+  users_batches_updated_by_idTousers users?        @relation("batches_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "batches_updated_by_id_26635b21_fk_users_id")
+  students                           students[]
+
+  @@index([created_by_id], map: "batches_created_by_id_eba943cc")
+  @@index([deleted_by_id], map: "batches_deleted_by_id_050c00b9")
+  @@index([school_id], map: "batches_school_id_04382be2")
+  @@index([updated_by_id], map: "batches_updated_by_id_26635b21")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model class_subjects {
+  id                                        BigInt                    @id @default(autoincrement())
+  created_at                                DateTime                  @db.Timestamptz(6)
+  updated_at                                DateTime                  @db.Timestamptz(6)
+  deleted_at                                DateTime                  @db.Timestamptz(6)
+  grade_class_id                            BigInt
+  school_id                                 BigInt
+  subject_id                                BigInt
+  teacher_id                                BigInt
+  created_by_id                             BigInt
+  deleted_by_id                             BigInt?
+  updated_by_id                             BigInt?
+  users_class_subjects_created_by_idTousers users                     @relation("class_subjects_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_created_by_id_aa3816ef_fk_users_id")
+  users_class_subjects_deleted_by_idTousers users?                    @relation("class_subjects_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_deleted_by_id_fd9137bf_fk_users_id")
+  grade_classes                             grade_classes             @relation(fields: [grade_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_grade_class_id_3fef40c5_fk_grade_classes_id")
+  schools                                   schools                   @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_school_id_1062ad98_fk_schools_id")
+  subjects                                  subjects                  @relation(fields: [subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_subject_id_060cf184_fk_subjects_id")
+  teachers                                  teachers                  @relation(fields: [teacher_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_teacher_id_efdd758e_fk_teachers_id")
+  users_class_subjects_updated_by_idTousers users?                    @relation("class_subjects_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_updated_by_id_14a05aa0_fk_users_id")
+  class_subjects_students                   class_subjects_students[]
+
+  @@index([created_by_id], map: "class_subjects_created_by_id_aa3816ef")
+  @@index([deleted_by_id], map: "class_subjects_deleted_by_id_fd9137bf")
+  @@index([grade_class_id], map: "class_subjects_grade_class_id_3fef40c5")
+  @@index([school_id], map: "class_subjects_school_id_1062ad98")
+  @@index([subject_id], map: "class_subjects_subject_id_060cf184")
+  @@index([teacher_id], map: "class_subjects_teacher_id_efdd758e")
+  @@index([updated_by_id], map: "class_subjects_updated_by_id_14a05aa0")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model class_subjects_students {
+  id              BigInt         @id @default(autoincrement())
+  classsubject_id BigInt
+  student_id      BigInt
+  class_subjects  class_subjects @relation(fields: [classsubject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_stude_classsubject_id_c5f6d3aa_fk_class_sub")
+  students        students       @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_subjects_students_student_id_b9a032a9_fk_students_id")
+
+  @@unique([classsubject_id, student_id], map: "class_subjects_students_classsubject_id_student__7efdd636_uniq")
+  @@index([classsubject_id], map: "class_subjects_students_classsubject_id_c5f6d3aa")
+  @@index([student_id], map: "class_subjects_students_student_id_b9a032a9")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model digital_markings {
+  id                                          BigInt                @id @default(autoincrement())
+  question_number                             Int
+  question                                    String                @db.VarChar
+  answer                                      String                @db.VarChar
+  not_detected_word                           Json
+  confidence_score                            Int
+  actual_mark                                 Float
+  obtained_mark                               Float
+  obtained_manual_mark                        Float?
+  reason                                      String                @db.VarChar
+  strength                                    String                @db.VarChar
+  weakness                                    String                @db.VarChar
+  created_at                                  DateTime              @db.Timestamptz(6)
+  updated_at                                  DateTime              @db.Timestamptz(6)
+  deleted_at                                  DateTime              @db.Timestamptz(6)
+  deleted_by_id                               BigInt?
+  school_id                                   BigInt
+  updated_by_id                               BigInt?
+  student_answer_sheet_id                     BigInt
+  users_digital_markings_deleted_by_idTousers users?                @relation("digital_markings_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "digital_markings_deleted_by_id_c8f7050e_fk_users_id")
+  schools                                     schools               @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "digital_markings_school_id_5558f442_fk_schools_id")
+  student_answer_sheets                       student_answer_sheets @relation(fields: [student_answer_sheet_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "digital_markings_student_answer_sheet_ecd55f40_fk_student_a")
+  users_digital_markings_updated_by_idTousers users?                @relation("digital_markings_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "digital_markings_updated_by_id_7ec3471a_fk_users_id")
+  manual_marking_logs                         manual_marking_logs[]
+
+  @@index([deleted_by_id], map: "digital_markings_deleted_by_id_c8f7050e")
+  @@index([school_id], map: "digital_markings_school_id_5558f442")
+  @@index([student_answer_sheet_id], map: "digital_markings_student_answer_sheet_id_ecd55f40")
+  @@index([updated_by_id], map: "digital_markings_updated_by_id_7ec3471a")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model districts {
+  id            BigInt    @id @default(autoincrement())
+  district_name String    @db.VarChar(100)
+  created_at    DateTime  @db.Timestamptz(6)
+  province_id   BigInt
+  provinces     provinces @relation(fields: [province_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "districts_province_id_bd3d41d9_fk_provinces_id")
+  schools       schools[]
+
+  @@index([province_id], map: "districts_province_id_bd3d41d9")
+}
+
+model django_content_type {
+  id              Int               @id @default(autoincrement())
+  app_label       String            @db.VarChar(100)
+  model           String            @db.VarChar(100)
+  auth_permission auth_permission[]
+
+  @@unique([app_label, model], map: "django_content_type_app_label_model_76bd3d3b_uniq")
+}
+
+model django_migrations {
+  id      BigInt   @id @default(autoincrement())
+  app     String   @db.VarChar(255)
+  name    String   @db.VarChar(255)
+  applied DateTime @db.Timestamptz(6)
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model grade_classes {
+  id                                       BigInt                    @id @default(autoincrement())
+  name                                     String                    @db.VarChar(100)
+  created_at                               DateTime                  @db.Timestamptz(6)
+  updated_at                               DateTime                  @db.Timestamptz(6)
+  deleted_at                               DateTime                  @db.Timestamptz(6)
+  grade_id                                 BigInt
+  school_id                                BigInt
+  created_by_id                            BigInt
+  deleted_by_id                            BigInt?
+  updated_by_id                            BigInt?
+  assessment_subjects                      assessment_subjects[]
+  assessments_grade_class                  assessments_grade_class[]
+  class_subjects                           class_subjects[]
+  users_grade_classes_created_by_idTousers users                     @relation("grade_classes_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_created_by_id_b162415e_fk_users_id")
+  users_grade_classes_deleted_by_idTousers users?                    @relation("grade_classes_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_deleted_by_id_097eb5e1_fk_users_id")
+  grades                                   grades                    @relation(fields: [grade_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_grade_id_ec886613_fk_grades_id")
+  schools                                  schools                   @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_school_id_e46d501f_fk_schools_id")
+  users_grade_classes_updated_by_idTousers users?                    @relation("grade_classes_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_updated_by_id_7bd19ef1_fk_users_id")
+  grade_classes_subject                    grade_classes_subject[]
+  students                                 students[]
+
+  @@index([created_by_id], map: "grade_classes_created_by_id_b162415e")
+  @@index([deleted_by_id], map: "grade_classes_deleted_by_id_097eb5e1")
+  @@index([grade_id], map: "grade_classes_grade_id_ec886613")
+  @@index([school_id], map: "grade_classes_school_id_e46d501f")
+  @@index([updated_by_id], map: "grade_classes_updated_by_id_7bd19ef1")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model grade_classes_subject {
+  id            BigInt        @id @default(autoincrement())
+  gradeclass_id BigInt
+  subject_id    BigInt
+  grade_classes grade_classes @relation(fields: [gradeclass_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_subjec_gradeclass_id_03908289_fk_grade_cla")
+  subjects      subjects      @relation(fields: [subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grade_classes_subject_subject_id_2467ba40_fk_subjects_id")
+
+  @@unique([gradeclass_id, subject_id], map: "grade_classes_subject_gradeclass_id_subject_id_95c19141_uniq")
+  @@index([gradeclass_id], map: "grade_classes_subject_gradeclass_id_03908289")
+  @@index([subject_id], map: "grade_classes_subject_subject_id_2467ba40")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model grades {
+  id                                BigInt                @id @default(autoincrement())
+  grade_number                      Int
+  description                       String?               @db.VarChar(100)
+  created_at                        DateTime              @db.Timestamptz(6)
+  updated_at                        DateTime              @db.Timestamptz(6)
+  deleted_at                        DateTime              @db.Timestamptz(6)
+  school_id                         BigInt
+  created_by_id                     BigInt
+  deleted_by_id                     BigInt?
+  updated_by_id                     BigInt?
+  assessment_subjects               assessment_subjects[]
+  assessments                       assessments[]
+  grade_classes                     grade_classes[]
+  users_grades_created_by_idTousers users                 @relation("grades_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grades_created_by_id_bdaea233_fk_users_id")
+  users_grades_deleted_by_idTousers users?                @relation("grades_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grades_deleted_by_id_79da17b5_fk_users_id")
+  schools                           schools               @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grades_school_id_712e9b1c_fk_schools_id")
+  users_grades_updated_by_idTousers users?                @relation("grades_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "grades_updated_by_id_2bc43547_fk_users_id")
+
+  @@index([created_by_id], map: "grades_created_by_id_bdaea233")
+  @@index([deleted_by_id], map: "grades_deleted_by_id_79da17b5")
+  @@index([school_id], map: "grades_school_id_712e9b1c")
+  @@index([updated_by_id], map: "grades_updated_by_id_2bc43547")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model manual_marking_logs {
+  id                 BigInt           @id @default(autoincrement())
+  before             Json
+  after              Json
+  done_at            DateTime         @db.Timestamptz(6)
+  digital_marking_id BigInt
+  done_by_id         BigInt
+  school_id          BigInt
+  digital_markings   digital_markings @relation(fields: [digital_marking_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "manual_marking_logs_digital_marking_id_1e4a1c7c_fk_digital_m")
+  users              users            @relation(fields: [done_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "manual_marking_logs_done_by_id_e43322a3_fk_users_id")
+  schools            schools          @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "manual_marking_logs_school_id_034e49a1_fk_schools_id")
+
+  @@index([digital_marking_id], map: "manual_marking_logs_digital_marking_id_1e4a1c7c")
+  @@index([done_by_id], map: "manual_marking_logs_done_by_id_e43322a3")
+  @@index([school_id], map: "manual_marking_logs_school_id_034e49a1")
+}
+
+model modules {
+  id          BigInt        @id @default(autoincrement())
+  module_name String        @db.VarChar(100)
+  created_at  DateTime      @db.Timestamptz(6)
+  updated_at  DateTime      @db.Timestamptz(6)
+  permissions permissions[]
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model notifications {
+  id          BigInt   @id @default(autoincrement())
+  title       String   @db.VarChar(100)
+  description String   @db.VarChar
+  is_read     Boolean
+  created_at  DateTime @db.Timestamptz(6)
+  school_id   BigInt
+  to_user_id  BigInt
+  schools     schools  @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "notifications_school_id_57c47175_fk_schools_id")
+  users       users    @relation(fields: [to_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "notifications_to_user_id_b68eb6ca_fk_users_id")
+
+  @@index([school_id], map: "notifications_school_id_57c47175")
+  @@index([to_user_id], map: "notifications_to_user_id_b68eb6ca")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model parents {
+  id                                  BigInt             @id @default(autoincrement())
+  first_name                          String             @db.VarChar(100)
+  last_name                           String             @db.VarChar(100)
+  email                               String             @db.VarChar(254)
+  mobile_number                       String             @db.VarChar(100)
+  gender                              String             @db.VarChar(100)
+  profile_image                       String             @db.VarChar
+  no_of_students                      Int
+  created_at                          DateTime           @db.Timestamptz(6)
+  updated_at                          DateTime           @db.Timestamptz(6)
+  deleted_at                          DateTime           @db.Timestamptz(6)
+  role_id                             BigInt
+  school_id                           BigInt
+  created_by_id                       BigInt
+  deleted_by_id                       BigInt?
+  parent_user_id                      BigInt
+  updated_by_id                       BigInt?
+  users_parents_created_by_idTousers  users              @relation("parents_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_created_by_id_ac5dcf59_fk_users_id")
+  users_parents_deleted_by_idTousers  users?             @relation("parents_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_deleted_by_id_a1f24fe3_fk_users_id")
+  users_parents_parent_user_idTousers users              @relation("parents_parent_user_idTousers", fields: [parent_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_parent_user_id_63fae29d_fk_users_id")
+  roles                               roles              @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_role_id_92680f98_fk_roles_id")
+  schools                             schools            @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_school_id_c4ab5e69_fk_schools_id")
+  users_parents_updated_by_idTousers  users?             @relation("parents_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "parents_updated_by_id_0e2fcde6_fk_users_id")
+  students_parents                    students_parents[]
+
+  @@index([created_by_id], map: "parents_created_by_id_ac5dcf59")
+  @@index([deleted_by_id], map: "parents_deleted_by_id_a1f24fe3")
+  @@index([parent_user_id], map: "parents_parent_user_id_63fae29d")
+  @@index([role_id], map: "parents_role_id_92680f98")
+  @@index([school_id], map: "parents_school_id_c4ab5e69")
+  @@index([updated_by_id], map: "parents_updated_by_id_0e2fcde6")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model permissions {
+  id                                     BigInt   @id @default(autoincrement())
+  allow                                  Json
+  created_at                             DateTime @db.Timestamptz(6)
+  updated_at                             DateTime @db.Timestamptz(6)
+  deleted_at                             DateTime @db.Timestamptz(6)
+  module_id                              BigInt
+  role_id                                BigInt
+  school_id                              BigInt
+  created_by_id                          BigInt
+  deleted_by_id                          BigInt?
+  updated_by_id                          BigInt?
+  users_permissions_created_by_idTousers users    @relation("permissions_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_created_by_id_8e5f4189_fk_users_id")
+  users_permissions_deleted_by_idTousers users?   @relation("permissions_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_deleted_by_id_932d20a7_fk_users_id")
+  modules                                modules  @relation(fields: [module_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_module_id_a4c1c64d_fk_modules_id")
+  roles                                  roles    @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_role_id_cf87720b_fk_roles_id")
+  schools                                schools  @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_school_id_56819327_fk_schools_id")
+  users_permissions_updated_by_idTousers users?   @relation("permissions_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "permissions_updated_by_id_48a908a6_fk_users_id")
+
+  @@index([created_by_id], map: "permissions_created_by_id_8e5f4189")
+  @@index([deleted_by_id], map: "permissions_deleted_by_id_932d20a7")
+  @@index([module_id], map: "permissions_module_id_a4c1c64d")
+  @@index([role_id], map: "permissions_role_id_cf87720b")
+  @@index([school_id], map: "permissions_school_id_56819327")
+  @@index([updated_by_id], map: "permissions_updated_by_id_48a908a6")
+}
+
+model provinces {
+  id            BigInt      @id @default(autoincrement())
+  province_name String      @db.VarChar(100)
+  country       String      @db.VarChar(100)
+  created_at    DateTime    @db.Timestamptz(6)
+  districts     districts[]
+  schools       schools[]
+}
+
+model roles {
+  id            BigInt          @id @default(autoincrement())
+  role_name     String          @db.VarChar(100)
+  created_at    DateTime        @db.Timestamptz(6)
+  updated_at    DateTime        @db.Timestamptz(6)
+  deleted_at    DateTime        @db.Timestamptz(6)
+  parents       parents[]
+  permissions   permissions[]
+  school_admins school_admins[]
+  students      students[]
+  teachers      teachers[]
+  users         users[]
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model school_admins {
+  id                                              BigInt   @id @default(autoincrement())
+  first_name                                      String   @db.VarChar(100)
+  last_name                                       String   @db.VarChar(100)
+  email                                           String   @db.VarChar(254)
+  mobile_number                                   String   @db.VarChar(100)
+  gender                                          String   @db.VarChar(100)
+  date_of_birth                                   DateTime @db.Timestamptz(6)
+  profile_image                                   String   @db.VarChar
+  created_at                                      DateTime @db.Timestamptz(6)
+  updated_at                                      DateTime @db.Timestamptz(6)
+  deleted_at                                      DateTime @db.Timestamptz(6)
+  role_id                                         BigInt
+  school_id                                       BigInt
+  created_by_id                                   BigInt
+  deleted_by_id                                   BigInt?
+  school_admin_user_id                            BigInt
+  updated_by_id                                   BigInt?
+  users_school_admins_created_by_idTousers        users    @relation("school_admins_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_created_by_id_16b86d41_fk_users_id")
+  users_school_admins_deleted_by_idTousers        users?   @relation("school_admins_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_deleted_by_id_176abba0_fk_users_id")
+  roles                                           roles    @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_role_id_ec264cac_fk_roles_id")
+  users_school_admins_school_admin_user_idTousers users    @relation("school_admins_school_admin_user_idTousers", fields: [school_admin_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_school_admin_user_id_333fefe2_fk_users_id")
+  schools                                         schools  @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_school_id_3954aecf_fk_schools_id")
+  users_school_admins_updated_by_idTousers        users?   @relation("school_admins_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "school_admins_updated_by_id_e607ec0c_fk_users_id")
+
+  @@index([created_by_id], map: "school_admins_created_by_id_16b86d41")
+  @@index([deleted_by_id], map: "school_admins_deleted_by_id_176abba0")
+  @@index([role_id], map: "school_admins_role_id_ec264cac")
+  @@index([school_admin_user_id], map: "school_admins_school_admin_user_id_333fefe2")
+  @@index([school_id], map: "school_admins_school_id_3954aecf")
+  @@index([updated_by_id], map: "school_admins_updated_by_id_e607ec0c")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model schools {
+  id                                 BigInt                  @id @default(autoincrement())
+  school_name                        String                  @db.VarChar(100)
+  school_type                        String                  @db.VarChar(100)
+  medium_of_instruction              String                  @db.VarChar(100)
+  emis_number                        String                  @db.VarChar
+  primary_language                   String                  @db.VarChar(100)
+  secondary_language                 String                  @db.VarChar(100)
+  contact_number                     String                  @db.VarChar(15)
+  contact_email                      String                  @db.VarChar(254)
+  created_at                         DateTime                @db.Timestamptz(6)
+  updated_at                         DateTime                @db.Timestamptz(6)
+  deleted_at                         DateTime                @db.Timestamptz(6)
+  district_id                        BigInt
+  province_id                        BigInt
+  created_by_id                      BigInt
+  deleted_by_id                      BigInt?
+  updated_by_id                      BigInt?
+  assessment_subjects                assessment_subjects[]
+  assessments                        assessments[]
+  batches                            batches[]
+  class_subjects                     class_subjects[]
+  digital_markings                   digital_markings[]
+  grade_classes                      grade_classes[]
+  grades                             grades[]
+  manual_marking_logs                manual_marking_logs[]
+  notifications                      notifications[]
+  parents                            parents[]
+  permissions                        permissions[]
+  school_admins                      school_admins[]
+  users_schools_created_by_idTousers users                   @relation("schools_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "schools_created_by_id_5a4de734_fk_users_id")
+  users_schools_deleted_by_idTousers users?                  @relation("schools_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "schools_deleted_by_id_5d527acb_fk_users_id")
+  districts                          districts               @relation(fields: [district_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "schools_district_id_678b4cf1_fk_districts_id")
+  provinces                          provinces               @relation(fields: [province_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "schools_province_id_9c170277_fk_provinces_id")
+  users_schools_updated_by_idTousers users?                  @relation("schools_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "schools_updated_by_id_8c613aa8_fk_users_id")
+  student_answer_sheets              student_answer_sheets[]
+  students                           students[]
+  subjects                           subjects[]
+  teachers                           teachers[]
+
+  @@index([created_by_id], map: "schools_created_by_id_5a4de734")
+  @@index([deleted_by_id], map: "schools_deleted_by_id_5d527acb")
+  @@index([district_id], map: "schools_district_id_678b4cf1")
+  @@index([province_id], map: "schools_province_id_9c170277")
+  @@index([updated_by_id], map: "schools_updated_by_id_8c613aa8")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model student_answer_sheets {
+  id                                               BigInt                @id @default(autoincrement())
+  answer_sheet                                     String                @db.VarChar(100)
+  ocr_status                                       Boolean
+  created_at                                       DateTime              @db.Timestamptz(6)
+  updated_at                                       DateTime              @db.Timestamptz(6)
+  deleted_at                                       DateTime              @db.Timestamptz(6)
+  assessment_subject_id                            BigInt
+  created_by_id                                    BigInt
+  deleted_by_id                                    BigInt?
+  school_id                                        BigInt
+  student_id                                       BigInt
+  updated_by_id                                    BigInt?
+  answer_sheet_images                              answer_sheet_images[]
+  digital_markings                                 digital_markings[]
+  assessment_subjects                              assessment_subjects   @relation(fields: [assessment_subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheet_assessment_subject_i_74fc6c6b_fk_assessmen")
+  users_student_answer_sheets_created_by_idTousers users                 @relation("student_answer_sheets_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheets_created_by_id_e59e1c3f_fk_users_id")
+  users_student_answer_sheets_deleted_by_idTousers users?                @relation("student_answer_sheets_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheets_deleted_by_id_1e90b73d_fk_users_id")
+  schools                                          schools               @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheets_school_id_d484df00_fk_schools_id")
+  students                                         students              @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheets_student_id_522a455e_fk_students_id")
+  users_student_answer_sheets_updated_by_idTousers users?                @relation("student_answer_sheets_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_answer_sheets_updated_by_id_bd367305_fk_users_id")
+
+  @@index([assessment_subject_id], map: "student_answer_sheets_assessment_subject_id_74fc6c6b")
+  @@index([created_by_id], map: "student_answer_sheets_created_by_id_e59e1c3f")
+  @@index([deleted_by_id], map: "student_answer_sheets_deleted_by_id_1e90b73d")
+  @@index([school_id], map: "student_answer_sheets_school_id_d484df00")
+  @@index([student_id], map: "student_answer_sheets_student_id_522a455e")
+  @@index([updated_by_id], map: "student_answer_sheets_updated_by_id_bd367305")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model students {
+  id                                    BigInt                    @id @default(autoincrement())
+  first_name                            String                    @db.VarChar(100)
+  last_name                             String                    @db.VarChar(100)
+  email                                 String                    @db.VarChar(254)
+  mobile_number                         String                    @db.VarChar(100)
+  gender                                String                    @db.VarChar(100)
+  profile_image                         String                    @db.VarChar
+  created_at                            DateTime                  @db.Timestamptz(6)
+  updated_at                            DateTime                  @db.Timestamptz(6)
+  deleted_at                            DateTime                  @db.Timestamptz(6)
+  batch_id                              BigInt
+  grade_class_id                        BigInt
+  role_id                               BigInt
+  school_id                             BigInt
+  created_by_id                         BigInt
+  deleted_by_id                         BigInt?
+  student_user_id                       BigInt
+  updated_by_id                         BigInt?
+  class_subjects_students               class_subjects_students[]
+  student_answer_sheets                 student_answer_sheets[]
+  batches                               batches                   @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_batch_id_5d404f0a_fk_batches_id")
+  users_students_created_by_idTousers   users                     @relation("students_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_created_by_id_fb96adcd_fk_users_id")
+  users_students_deleted_by_idTousers   users?                    @relation("students_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_deleted_by_id_8c59836c_fk_users_id")
+  grade_classes                         grade_classes             @relation(fields: [grade_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_grade_class_id_45b5b53b_fk_grade_classes_id")
+  roles                                 roles                     @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_role_id_cbf4fc23_fk_roles_id")
+  schools                               schools                   @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_school_id_f7f2de45_fk_schools_id")
+  users_students_student_user_idTousers users                     @relation("students_student_user_idTousers", fields: [student_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_student_user_id_59b86964_fk_users_id")
+  users_students_updated_by_idTousers   users?                    @relation("students_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_updated_by_id_89dab74b_fk_users_id")
+  students_parents                      students_parents[]
+  students_subjects                     students_subjects[]
+
+  @@index([batch_id], map: "students_batch_id_5d404f0a")
+  @@index([created_by_id], map: "students_created_by_id_fb96adcd")
+  @@index([deleted_by_id], map: "students_deleted_by_id_8c59836c")
+  @@index([grade_class_id], map: "students_grade_class_id_45b5b53b")
+  @@index([role_id], map: "students_role_id_cbf4fc23")
+  @@index([school_id], map: "students_school_id_f7f2de45")
+  @@index([student_user_id], map: "students_student_user_id_59b86964")
+  @@index([updated_by_id], map: "students_updated_by_id_89dab74b")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model students_parents {
+  id         BigInt   @id @default(autoincrement())
+  student_id BigInt
+  parent_id  BigInt
+  parents    parents  @relation(fields: [parent_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_parents_parent_id_9fc5005a_fk_parents_id")
+  students   students @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_parents_student_id_37b1dbe9_fk_students_id")
+
+  @@unique([student_id, parent_id], map: "students_parents_student_id_parent_id_934b0cd0_uniq")
+  @@index([parent_id], map: "students_parents_parent_id_9fc5005a")
+  @@index([student_id], map: "students_parents_student_id_37b1dbe9")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model students_subjects {
+  id         BigInt   @id @default(autoincrement())
+  student_id BigInt
+  subject_id BigInt
+  students   students @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_subjects_student_id_79068edb_fk_students_id")
+  subjects   subjects @relation(fields: [subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_subjects_subject_id_1ec230b0_fk_subjects_id")
+
+  @@unique([student_id, subject_id], map: "students_subjects_student_id_subject_id_c94a2887_uniq")
+  @@index([student_id], map: "students_subjects_student_id_79068edb")
+  @@index([subject_id], map: "students_subjects_subject_id_1ec230b0")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model subjects {
+  id                                  BigInt                  @id @default(autoincrement())
+  subject_name                        String                  @db.VarChar(100)
+  subject_code                        String                  @db.VarChar(100)
+  created_at                          DateTime                @db.Timestamptz(6)
+  updated_at                          DateTime                @db.Timestamptz(6)
+  deleted_at                          DateTime                @db.Timestamptz(6)
+  school_id                           BigInt
+  created_by_id                       BigInt
+  deleted_by_id                       BigInt?
+  updated_by_id                       BigInt?
+  assessment_subjects                 assessment_subjects[]
+  class_subjects                      class_subjects[]
+  grade_classes_subject               grade_classes_subject[]
+  students_subjects                   students_subjects[]
+  users_subjects_created_by_idTousers users                   @relation("subjects_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subjects_created_by_id_00da478f_fk_users_id")
+  users_subjects_deleted_by_idTousers users?                  @relation("subjects_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subjects_deleted_by_id_621e2e4f_fk_users_id")
+  schools                             schools                 @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subjects_school_id_dd462fb5_fk_schools_id")
+  users_subjects_updated_by_idTousers users?                  @relation("subjects_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subjects_updated_by_id_85d847e3_fk_users_id")
+
+  @@index([created_by_id], map: "subjects_created_by_id_00da478f")
+  @@index([deleted_by_id], map: "subjects_deleted_by_id_621e2e4f")
+  @@index([school_id], map: "subjects_school_id_dd462fb5")
+  @@index([updated_by_id], map: "subjects_updated_by_id_85d847e3")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model teachers {
+  id                                    BigInt           @id @default(autoincrement())
+  first_name                            String           @db.VarChar(100)
+  last_name                             String           @db.VarChar(100)
+  email                                 String           @db.VarChar(254)
+  mobile_number                         String           @db.VarChar(100)
+  gender                                String           @db.VarChar(100)
+  subject_specialization                String           @db.VarChar(100)
+  date_of_birth                         DateTime         @db.Timestamptz(6)
+  hire_date                             DateTime         @db.Timestamptz(6)
+  profile_image                         String           @db.VarChar
+  created_at                            DateTime         @db.Timestamptz(6)
+  updated_at                            DateTime         @db.Timestamptz(6)
+  deleted_at                            DateTime         @db.Timestamptz(6)
+  role_id                               BigInt
+  school_id                             BigInt
+  created_by_id                         BigInt
+  deleted_by_id                         BigInt?
+  teacher_user_id                       BigInt
+  updated_by_id                         BigInt?
+  class_subjects                        class_subjects[]
+  users_teachers_created_by_idTousers   users            @relation("teachers_created_by_idTousers", fields: [created_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_created_by_id_cf6305b4_fk_users_id")
+  users_teachers_deleted_by_idTousers   users?           @relation("teachers_deleted_by_idTousers", fields: [deleted_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_deleted_by_id_6ef502d9_fk_users_id")
+  roles                                 roles            @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_role_id_9f9d396b_fk_roles_id")
+  schools                               schools          @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_school_id_713c11c7_fk_schools_id")
+  users_teachers_teacher_user_idTousers users            @relation("teachers_teacher_user_idTousers", fields: [teacher_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_teacher_user_id_4879c506_fk_users_id")
+  users_teachers_updated_by_idTousers   users?           @relation("teachers_updated_by_idTousers", fields: [updated_by_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "teachers_updated_by_id_659064ae_fk_users_id")
+
+  @@index([created_by_id], map: "teachers_created_by_id_cf6305b4")
+  @@index([deleted_by_id], map: "teachers_deleted_by_id_6ef502d9")
+  @@index([role_id], map: "teachers_role_id_9f9d396b")
+  @@index([school_id], map: "teachers_school_id_713c11c7")
+  @@index([teacher_user_id], map: "teachers_teacher_user_id_4879c506")
+  @@index([updated_by_id], map: "teachers_updated_by_id_659064ae")
+}
+
+/// This model has constraints using non-default deferring rules and requires additional setup for migrations. Visit https://pris.ly/d/constraint-deferring for more info.
+model users {
+  id                                                               BigInt                  @id @default(autoincrement())
+  email                                                            String                  @db.VarChar(254)
+  password                                                         String                  @db.VarChar(100)
+  status                                                           String                  @db.VarChar(100)
+  resetToken                                                       String                  @db.VarChar
+  resetTokenExpires                                                DateTime                @db.Timestamptz(6)
+  created_at                                                       DateTime                @db.Timestamptz(6)
+  updated_at                                                       DateTime                @db.Timestamptz(6)
+  deleted_at                                                       DateTime                @db.Timestamptz(6)
+  role_id                                                          BigInt
+  assessment_subjects_assessment_subjects_created_by_idTousers     assessment_subjects[]   @relation("assessment_subjects_created_by_idTousers")
+  assessment_subjects_assessment_subjects_deleted_by_idTousers     assessment_subjects[]   @relation("assessment_subjects_deleted_by_idTousers")
+  assessment_subjects_assessment_subjects_updated_by_idTousers     assessment_subjects[]   @relation("assessment_subjects_updated_by_idTousers")
+  assessments_assessments_created_by_idTousers                     assessments[]           @relation("assessments_created_by_idTousers")
+  assessments_assessments_deleted_by_idTousers                     assessments[]           @relation("assessments_deleted_by_idTousers")
+  assessments_assessments_updated_by_idTousers                     assessments[]           @relation("assessments_updated_by_idTousers")
+  batches_batches_created_by_idTousers                             batches[]               @relation("batches_created_by_idTousers")
+  batches_batches_deleted_by_idTousers                             batches[]               @relation("batches_deleted_by_idTousers")
+  batches_batches_updated_by_idTousers                             batches[]               @relation("batches_updated_by_idTousers")
+  class_subjects_class_subjects_created_by_idTousers               class_subjects[]        @relation("class_subjects_created_by_idTousers")
+  class_subjects_class_subjects_deleted_by_idTousers               class_subjects[]        @relation("class_subjects_deleted_by_idTousers")
+  class_subjects_class_subjects_updated_by_idTousers               class_subjects[]        @relation("class_subjects_updated_by_idTousers")
+  digital_markings_digital_markings_deleted_by_idTousers           digital_markings[]      @relation("digital_markings_deleted_by_idTousers")
+  digital_markings_digital_markings_updated_by_idTousers           digital_markings[]      @relation("digital_markings_updated_by_idTousers")
+  grade_classes_grade_classes_created_by_idTousers                 grade_classes[]         @relation("grade_classes_created_by_idTousers")
+  grade_classes_grade_classes_deleted_by_idTousers                 grade_classes[]         @relation("grade_classes_deleted_by_idTousers")
+  grade_classes_grade_classes_updated_by_idTousers                 grade_classes[]         @relation("grade_classes_updated_by_idTousers")
+  grades_grades_created_by_idTousers                               grades[]                @relation("grades_created_by_idTousers")
+  grades_grades_deleted_by_idTousers                               grades[]                @relation("grades_deleted_by_idTousers")
+  grades_grades_updated_by_idTousers                               grades[]                @relation("grades_updated_by_idTousers")
+  manual_marking_logs                                              manual_marking_logs[]
+  notifications                                                    notifications[]
+  parents_parents_created_by_idTousers                             parents[]               @relation("parents_created_by_idTousers")
+  parents_parents_deleted_by_idTousers                             parents[]               @relation("parents_deleted_by_idTousers")
+  parents_parents_parent_user_idTousers                            parents[]               @relation("parents_parent_user_idTousers")
+  parents_parents_updated_by_idTousers                             parents[]               @relation("parents_updated_by_idTousers")
+  permissions_permissions_created_by_idTousers                     permissions[]           @relation("permissions_created_by_idTousers")
+  permissions_permissions_deleted_by_idTousers                     permissions[]           @relation("permissions_deleted_by_idTousers")
+  permissions_permissions_updated_by_idTousers                     permissions[]           @relation("permissions_updated_by_idTousers")
+  school_admins_school_admins_created_by_idTousers                 school_admins[]         @relation("school_admins_created_by_idTousers")
+  school_admins_school_admins_deleted_by_idTousers                 school_admins[]         @relation("school_admins_deleted_by_idTousers")
+  school_admins_school_admins_school_admin_user_idTousers          school_admins[]         @relation("school_admins_school_admin_user_idTousers")
+  school_admins_school_admins_updated_by_idTousers                 school_admins[]         @relation("school_admins_updated_by_idTousers")
+  schools_schools_created_by_idTousers                             schools[]               @relation("schools_created_by_idTousers")
+  schools_schools_deleted_by_idTousers                             schools[]               @relation("schools_deleted_by_idTousers")
+  schools_schools_updated_by_idTousers                             schools[]               @relation("schools_updated_by_idTousers")
+  student_answer_sheets_student_answer_sheets_created_by_idTousers student_answer_sheets[] @relation("student_answer_sheets_created_by_idTousers")
+  student_answer_sheets_student_answer_sheets_deleted_by_idTousers student_answer_sheets[] @relation("student_answer_sheets_deleted_by_idTousers")
+  student_answer_sheets_student_answer_sheets_updated_by_idTousers student_answer_sheets[] @relation("student_answer_sheets_updated_by_idTousers")
+  students_students_created_by_idTousers                           students[]              @relation("students_created_by_idTousers")
+  students_students_deleted_by_idTousers                           students[]              @relation("students_deleted_by_idTousers")
+  students_students_student_user_idTousers                         students[]              @relation("students_student_user_idTousers")
+  students_students_updated_by_idTousers                           students[]              @relation("students_updated_by_idTousers")
+  subjects_subjects_created_by_idTousers                           subjects[]              @relation("subjects_created_by_idTousers")
+  subjects_subjects_deleted_by_idTousers                           subjects[]              @relation("subjects_deleted_by_idTousers")
+  subjects_subjects_updated_by_idTousers                           subjects[]              @relation("subjects_updated_by_idTousers")
+  teachers_teachers_created_by_idTousers                           teachers[]              @relation("teachers_created_by_idTousers")
+  teachers_teachers_deleted_by_idTousers                           teachers[]              @relation("teachers_deleted_by_idTousers")
+  teachers_teachers_teacher_user_idTousers                         teachers[]              @relation("teachers_teacher_user_idTousers")
+  teachers_teachers_updated_by_idTousers                           teachers[]              @relation("teachers_updated_by_idTousers")
+  roles                                                            roles                   @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_role_id_1900a745_fk_roles_id")
+
+  @@index([role_id], map: "users_role_id_1900a745")
+}

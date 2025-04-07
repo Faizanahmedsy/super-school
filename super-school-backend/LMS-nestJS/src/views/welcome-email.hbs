@@ -1,0 +1,73 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Welcome to grAIdar</title>
+        <style>
+            body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f9; } .main-container {
+            max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden; }
+            .container { max-width: 500px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; } .header { background-color: #0a740a; color: white; padding: 20px; text-align: center; border-top-left-radius: 8px;
+            border-top-right-radius: 8px; } .header h1 { font-size: 24px; margin: 0; } .header p { font-size: 16px; margin: 0; } .content { text-align: left;
+            color: #555; } .content p { font-size: 16px; margin: 10px 0; } .highlight { font-weight: bold; color: #0a740a; } ul { padding-left: 20px; } li {
+            margin: 8px 0; } .btn { display: inline-block; padding: 12px 24px; background-color: #3498db; color: #fff; font-size: 18px; text-align: center;
+            text-decoration: none; border-radius: 4px; margin: 20px 0; cursor: pointer; } .btn:hover { background-color: #2980b9; } .footer { background-color:
+            #f4f4f4; padding: 15px; text-align: center; font-size: 12px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; } .footer p { margin:
+            0; } .signature-image { display: block; max-width: 150px; margin: 10px auto; }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="header">
+                <h1>Welcome to grAIdar</h1>
+                <p>Your Digital Marking Assistant</p>
+            </header>
+            <div class="container">
+                <div class="content">
+                    <p>Dear <span class="highlight">{{first_name}} {{last_name}}</span>,</p>
+
+                    <p>
+                        Welcome to grAIdar! You have been successfully registered as a
+                        <span class="highlight">{{role_name}}</span>
+                        at
+                        <span class="highlight">{{school_name}}</span>.
+                    </p>
+
+                    <p>Here are your details:</p>
+                    <ul>
+                        <li><strong>Your Name is as follows:</strong> {{first_name}} {{last_name}}</li>
+                        <li><strong>As a {{role_name}}, you hold a specific set of responsibilities and permissions.</strong></li>
+                        <li><strong>School:</strong> {{school_name}}</li>
+                        <li>
+                            <strong>Email:</strong>
+                            {{email}}
+                            - This email is registered in our system for all communication purposes. Please check your inbox regularly for updates and important
+                            messages from your school.
+                        </li>
+                    </ul>
+
+                    <p>An email has been sent to verify your email.</p>
+                    <br />
+                    <p>
+                        Once the email is verified from your end, you can login and setup your school's profile.
+                    </p>
+
+                    <p>For any questions or assistance needed, please reach out to <span class="highlight">{{supportemail}}</span>.</p>
+
+                    <p>We hope that the digitalization of marking and record-keeping makes your experience hassle-free.</p>
+
+                    <br />
+                    <p>Yours sincerely,</p>
+                    <p>Team Technov8</p>
+
+                    <img src="{{logoPath}}/nsc_email.png" alt="image" class="signature-image" style="display: block; max-width: 150px; margin: 10px auto" />
+
+                </div>
+
+                <footer class="footer">
+                    <p>&copy; {{year}} grAIdar. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
